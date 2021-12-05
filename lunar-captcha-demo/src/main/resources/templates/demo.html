@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <script src="../static/axios.min.js"></script>
+    <script src="../static/bootstrap.min.js"></script>
+    <link href="../static/bootstrap.min.css" rel="stylesheet" >
+</head>
+<body>
+<h1>Image Captcha</h1>
+<!-- Button trigger modal -->
+<button type="button" onclick="getImageCaptcha()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+    Pop up
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Image Captcha</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" id="image-captcha" class="img-thumbnail" alt="Image Captcha" onclick="getImageCaptcha()">
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Please enter the captcha:</label>
+                    <input id="image-captcha-content" type="text" class="form-control" id="recipient-name">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="checkCaptcha()" type="button" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+<h1>Rotate Captcha(TODO)</h1>
+<img src="" id="rotate-captcha" class="img-thumbnail" alt="Rotate Captcha" >
+<h1>Click Captcha(TODO)</h1>
+<img src="" id="click-captcha-main" class="img-thumbnail" alt="Click Captcha" >
+<img src="" id="click-captcha-sub" class="img-thumbnail" alt="Click Captcha" >
+<h1>Slide Captcha(TODO)</h1>
+<img src="" id="slide-captcha-main" class="img-thumbnail" alt="Slide Captcha" >
+<img src="" id="slide-captcha-sub" class="img-thumbnail" alt="Slide Captcha" >
+
+</body>
+<script src="../static/main.js"></script>
+</html>
