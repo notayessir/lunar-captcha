@@ -1,4 +1,4 @@
-English | [中文](https://github.com/notayessir/moon-captcha/blob/master/README_CN.md)
+English | [中文](https://github.com/notayessir/lunar-captcha/blob/master/README_CN.md)
 
 ## Introduction
 
