@@ -2,9 +2,12 @@ English | [中文](https://github.com/notayessir/lunar-captcha/blob/master/READM
 
 ## Introduction
 
-Project are used in generate captcha, four common captcha are implemented for now and only backend implementation, frontend implementation need to extra implement.
+Four common types of captcha are implemented which aimed at intercepting automatic robots\scripts.
 
-Project is more as a reference for self-realization, and the production environment needs to consider other factors.
+Notice:
+
+1. project now only has backend implementation, frontend implementation need to extra work.
+2. project is more as a reference for self-realization, and the production environment needs to consider other factors.
 
 ## Demo
 
@@ -29,18 +32,28 @@ Project is more as a reference for self-realization, and the production environm
 create letter captcha :
 
 ```java
-ImageCaptchaConfig captchaConfig = new ImageCaptchaConfig(); // image config
-captchaConfig.setAdhesion(5);				// adhesion of each letter
-captchaConfig.setLeftRotation(10);	// range of left rotation
-captchaConfig.setRightRotation(0);	// range of right rotation
-captchaConfig.setImageWidth(125);		// image width
-captchaConfig.setImageHeight(45);		// image height
-captchaConfig.setCodeCount(4);			// count of letter
-captchaConfig.setFontSize(45);			// font of letter
-captchaConfig.setImageFormat(CaptchaConst.ImageFormat.GIF);	// image form
-captchaConfig.setCodeColor("255,255,255,255");							// image rgba
+// image config
+ImageCaptchaConfig captchaConfig = new ImageCaptchaConfig();
+// adhesion of each letter
+captchaConfig.setAdhesion(5);
+// range of left rotation
+captchaConfig.setLeftRotation(10);
+// range of right rotation
+captchaConfig.setRightRotation(0);
+// image width
+captchaConfig.setImageWidth(125);
+// image height
+captchaConfig.setImageHeight(45);
+// count of letter
+captchaConfig.setCodeCount(4);
+// font of letter
+captchaConfig.setFontSize(45);
+// image form
+captchaConfig.setImageFormat(CaptchaConst.ImageFormat.GIF);
+// image rgba
+captchaConfig.setCodeColor("255,255,255,255");
 ImageCaptcha imageCaptcha = new ImageCaptcha();	
-CaptchaData<ImageCaptchaVO, ImageCaptchaBO> imageCaptcha  = imageCaptcha.create(captchaConfig);
+CaptchaData<ImageCaptchaVO, ImageCaptchaBO> captchaData  = imageCaptcha.create(captchaConfig);
 /**
 xxBO，include meta info, letter string for this kind of captcha, usually storage in cache for validate;
 xxVO，image in base64，return to frontend;
@@ -56,10 +69,14 @@ imageCaptcha.check(ImageCaptchaBO backend, ImageCaptchaBO client);
 create rotate captcha :
 
 ```java
-RotateResource randomResource = new RotateResource();	// load static resources
-RotateCaptcha rotateCaptcha = new RotateCaptcha(randomResource);	// inject to service
-RotateCaptchaConfig config = new RotateCaptchaConfig();						// rotate config
-config.setRotateDeviation(10);		// deviation range
+// load static resources
+RotateResource randomResource = new RotateResource();
+// inject to service
+RotateCaptcha rotateCaptcha = new RotateCaptcha(randomResource);
+// rotate config
+RotateCaptchaConfig config = new RotateCaptchaConfig();
+// deviation range
+config.setRotateDeviation(10);
 CaptchaData<RotateCaptchaVO, RotateCaptchaBO> rotateCaptcha = rotateCaptcha.create(config);
 /**
 xxBO，include correct rotate angle for this implement 
@@ -76,11 +93,16 @@ rotateCaptcha.check(RotateCaptchaBO backend, RotateCaptchaBO client);
 create click captcha :
 
 ```java
-ClickResource clickResource = new ClickResource();	// load static resources
-ClickCaptcha clickCaptcha = new ClickCaptcha(clickResource); // inject to service
-ClickCaptchaConfig captchaConfig = new ClickCaptchaConfig();	// click captcha
-captchaConfig.setPatternNum(4);					// patterns to show 
-captchaConfig.setPatternSelectedNum(2);	// patterns to click 
+// load static resources
+ClickResource clickResource = new ClickResource();
+// inject to service
+ClickCaptcha clickCaptcha = new ClickCaptcha(clickResource);
+// click captcha
+ClickCaptchaConfig captchaConfig = new ClickCaptchaConfig();
+// patterns to show
+captchaConfig.setPatternNum(4);
+// patterns to click 
+captchaConfig.setPatternSelectedNum(2);
 CaptchaData<ClickCaptchaVO, ClickCaptchaBO> captchaData = clickCaptcha.create(captchaConfig);
 /**
 xxBO，include correct click coordinate for this implement 
@@ -97,10 +119,14 @@ clickCaptcha.check(ClickCaptchaBO backend, ClickCaptchaBO client);
 create slide captcha :
 
 ```java
-SlideResource slideResource = new SlideResource();	// load static resources
-SlideCaptcha slideCaptcha = new SlideCaptcha(slideResource); // inject to service
-SlideCaptchaConfig captchaConfig = new SlideCaptchaConfig();	// slide config
-captchaConfig.setDeviation(10);		// x axis deviation
+// load static resources
+SlideResource slideResource = new SlideResource();
+// inject to service
+SlideCaptcha slideCaptcha = new SlideCaptcha(slideResource);
+// slide config
+SlideCaptchaConfig captchaConfig = new SlideCaptchaConfig();
+// x axis deviation
+captchaConfig.setDeviation(10);	
 CaptchaData<SlideCaptchaVO, SlideCaptchaBO> captchaData = slideCaptcha.create(captchaConfig);
 /**
 xxBO，nclude correct click x axis for this implement
@@ -127,7 +153,7 @@ public class ExternalRotateResource extends RotateResource {
   
   @Override    
   protected void loadDynamic() {        
-    // your resources    
+    // load your resources    
   }
 }
 ```
